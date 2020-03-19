@@ -1,0 +1,30 @@
+.personajes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 10px;
+}
+
+.card {
+    margin: 10px;
+}
+
+.header {
+    display: flex;
+    justify-content: end;
+    width: 100%;
+}
+
+#buscar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    width: 50%;
+}
+
+.form-group {
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+}
