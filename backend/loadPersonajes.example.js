@@ -1,6 +1,6 @@
 // const axios = require('axios')
 // const Sequelize = require('sequelize');
-// const sequelize = new Sequelize('rickymorty', 'root', '123456', {
+// const sequelize = new Sequelize('rickymorty', 'root', 'null', {
 //     host: 'localhost',
 //     dialect: 'mysql'
 // });

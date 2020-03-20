@@ -15,12 +15,22 @@ app.use((req, res, next) => {
     next();
 });
 
+//Endpoints
 app.get('/personajes', (req, res) => {
     sequelize.query(`SELECT * FROM personajes`)
         .then(results => res.send(results[0]))
         .catch(error => {
             console.error(error)
             res.status(500).send('Problema al cargar los personajes')
+        })
+})
+
+app.get('/episodes', (req, res) => {
+    sequelize.query(`SELECT * FROM episodes`)
+        .then(results => res.send(results[0]))
+        .catch(error => {
+            console.error(error)
+            res.status(500).send('Problema al cargar los episodes')
         })
 })
 
@@ -54,21 +64,45 @@ app.get('/personajes/:name', (req, res) => {
         })
 })
 
-app.get('/episodes', (req, res) => {
-    sequelize.query(`SELECT * FROM episodes`)
-        .then(results => res.send(results[0]))
-        .catch(error => {
-            console.error(error)
-            res.status(500).send('Problema al cargar los episodes')
-        })
-})
-app.get('/episodes', (req, res) => {
+//Filtro por id del episodio
+app.get('/episodes/id/:id', (req, res) => {
+        const id = req.params.id;
+        sequelize.query(`SELECT * FROM episodes WHERE id=${id}`)
+            .then(results => res.send(results[0]))
+            .catch(error => {
+                console.error(error)
+                res.status(500).send('Problema al cargar los ids de los episodes')
+            })
+    })
+    //Filtro por nombre del episodio
+app.get('/episodes/name/:name', (req, res) => {
     const nombre = req.params.name;
     sequelize.query(`SELECT * FROM episodes WHERE name LIKE'%${nombre}%'`)
         .then(results => res.send(results[0]))
         .catch(error => {
             console.error(error)
             res.status(500).send('Problema al cargar los episodios')
+        })
+})
+
+//Filtro por id del location
+app.get('/locations/id/:id', (req, res) => {
+        const id = req.params.id;
+        sequelize.query(`SELECT * FROM locations WHERE id=${id}`)
+            .then(results => res.send(results[0]))
+            .catch(error => {
+                console.error(error)
+                res.status(500).send('Problema al cargar los ids de los locations')
+            })
+    })
+    //Filtro por nombre del planeta(location)
+app.get('/locations/:name', (req, res) => {
+    const nombre = req.params.name;
+    sequelize.query(`SELECT * FROM locations WHERE name LIKE'%${nombre}%'`)
+        .then(results => res.send(results[0]))
+        .catch(error => {
+            console.error(error)
+            res.status(500).send('Problema al cargar los names de los locations')
         })
 })
 app.post('/user', (req, res) => {
@@ -79,4 +113,5 @@ app.post('/episodes', (req, res) => {
     Episode.create({...req.body })
         .then(episode => res.status(201).send(episode))
 })
+
 app.listen(PORT, () => console.log('server runing on ' + PORT))
