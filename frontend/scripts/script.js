@@ -3,20 +3,27 @@ const personajesDiv = document.querySelector('.personajes')
 const locationsDiv = document.querySelector('.locations')
 const episodesDiv = document.querySelector('.episodes')
 const formEpisode = document.querySelector('#formEpisode')
+const formBuscar = document.getElementById('formBuscar')
 let page = 0
 formEpisode.addEventListener('submit', (event) => {
     event.preventDefault();
     saveEpisode();
 })
-const getPersonajes = () => {
-    if (event.key === 'Enter') {
-        const busqueda = event.target.value
-        axios.get(API_URL + 'personajes/' + busqueda)
-            .then(res => {
-                const personajes = res.data;
-                personajesDiv.innerHTML = '';
-                personajes.forEach(personaje => {
-                    personajesDiv.innerHTML += `
+formBuscar.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const busqueda = event.target.buscar.value
+    axios.get(API_URL + 'personajes/' + busqueda)
+        .then(res => {
+            const personajes = res.data;
+            renderPersonajes(personajes);
+        })
+        .catch(err => console.error(err))
+})
+
+const renderPersonajes = personajes => {
+    personajesDiv.innerHTML = '';
+    personajes.forEach(personaje => {
+        personajesDiv.innerHTML += `
                 <div class="card col-lg-3 col-xs-12 col-md-6">
                     <div class="personaje">
                     <div class="card-body">
@@ -29,9 +36,20 @@ const getPersonajes = () => {
                     </div>
                     </div>
                      `
-                });
+    });
 
+}
+const getPersonajes = () => {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        const busqueda = event.target.value
+        axios.get(API_URL + 'personajes/' + busqueda)
+            .then(res => {
+                const personajes = res.data;
+                renderPersonajes(personajes);
             })
+            .catch(err => console.error(err))
+
     }
 }
 const buscar = document.getElementById('buscar').addEventListener('keyup', getPersonajes)
@@ -55,6 +73,7 @@ const getLocations = (page) => {
                  `
             });
         })
+        .catch(err => console.error(err))
 }
 
 getLocations(page)
@@ -89,6 +108,7 @@ const getEpisodes = () => {
                  `
             });
         })
+        .catch(err => console.error(err))
 }
 
 getEpisodes()

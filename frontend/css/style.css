@@ -53,7 +53,6 @@
 .menunav {
     display: flex;
     justify-content: space-around;
-    width: 100vw;
     background-color: #073642;
 }
 
@@ -78,4 +77,18 @@
 .navhome {
     margin: 10px;
     color: #839496;
+}
+
+.form {
+    width: 30vw;
+}
+
+.submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagination {
+    margin: 10px
 }
