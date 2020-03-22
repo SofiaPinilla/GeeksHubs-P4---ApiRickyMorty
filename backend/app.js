@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 const express = require('express');
 const PORT = process.env.PORT || 3001
 const app = express();
-const { sequelize } = require('./models/index');
+const { sequelize, Episode } = require('./models/index');
 
 app.use(express.json())
 
@@ -49,16 +49,6 @@ app.get('/locations/:page', (req, res) => {
         .catch(error => {
             console.error(error)
             res.status(500).send('We had a problem trying to load the locations')
-        })
-})
-
-app.get('/episodes/:page', (req, res) => {
-    const start = req.params.page * 5;
-    sequelize.query(`SELECT * FROM episodes LIMIT ${start},5`)
-        .then(results => res.send(results[0]))
-        .catch(error => {
-            console.error(error)
-            res.status(500).send('We had a problem trying to load the episodes')
         })
 })
 

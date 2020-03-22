@@ -2,7 +2,12 @@ API_URL = "http://localhost:3001/"
 const personajesDiv = document.querySelector('.personajes')
 const locationsDiv = document.querySelector('.locations')
 const episodesDiv = document.querySelector('.episodes')
+const formEpisode = document.querySelector('#formEpisode')
 let page = 0
+formEpisode.addEventListener('submit', (event) => {
+    event.preventDefault();
+    saveEpisode();
+})
 const getPersonajes = () => {
     if (event.key === 'Enter') {
         const busqueda = event.target.value
@@ -60,7 +65,7 @@ document.querySelector('.previousPage').addEventListener('click', event => {
     }
 })
 document.querySelector('.nextPage').addEventListener('click', event => {
-    if (page < 4) {
+    if (page < 9) {
         getLocations(++page)
     }
 })
@@ -88,16 +93,6 @@ const getEpisodes = () => {
 
 getEpisodes()
 
-// document.querySelector('.previousPage').addEventListener('click', event => {
-//     if (page > 0) {
-//         getEpisodes(--page)
-//     }
-// })
-// document.querySelector('.nextPage').addEventListener('click', event => {
-//     if (page < 4) {
-//         getEpisodes(++page)
-//     }
-// })
 
 //menu navegación
 const homeBtn = document.getElementById('homeBtn');
@@ -131,3 +126,34 @@ const verEpisodes = () => {
 homeBtn.addEventListener('click', verHome);
 locationBtn.addEventListener('click', verUbicacion);
 episodesBtn.addEventListener('click', verEpisodes);
+
+//Formulario para añadir episodios
+
+const btn = document.getElementById('btn');
+const name = document.getElementById('name')
+const air_date = document.getElementById('air_date')
+const episodeInput = document.getElementById("episodeInput")
+
+
+const saveEpisode = () => {
+    axios.post('http://localhost:3001/episodes', {
+            name: name.value,
+            air_date: air_date.value,
+            episode: episodeInput.value,
+        })
+        .then(res => {
+            const episode = res.data;
+            episodesDiv.innerHTML += `
+            <div class="card col-lg-3 col-xs-12 col-md-6">
+                <div class="personaje">
+                <div class="card-body">
+                <h3 class="card-header">${episode.name}</h3>
+                <h5 class="card-title">${episode.air_date}</h5>
+                <h6 class="card-subtitle text-muted">${episode.episode}</h6>
+                </div>
+                </div>
+                </div>
+                 `
+        })
+        .catch(err => console.error(err))
+}
