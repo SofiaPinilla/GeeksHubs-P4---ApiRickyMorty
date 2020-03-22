@@ -1,5 +1,7 @@
 API_URL = "http://localhost:3001/"
 const personajesDiv = document.querySelector('.personajes')
+const locationsDiv = document.querySelector('.locations')
+const episodesDiv = document.querySelector('.episodes')
 let page = 0
 const getPersonajes = () => {
     if (event.key === 'Enter') {
@@ -28,3 +30,104 @@ const getPersonajes = () => {
     }
 }
 const buscar = document.getElementById('buscar').addEventListener('keyup', getPersonajes)
+
+const getLocations = (page) => {
+    axios.get(API_URL + 'locations/' + page)
+        .then(res => {
+            const locations = res.data;
+            locationsDiv.innerHTML = '';
+            locations.forEach(location => {
+                locationsDiv.innerHTML += `
+            <div class="card col-lg-3 col-xs-12 col-md-6">
+                <div class="personaje">
+                <div class="card-body">
+                <h3 class="card-header">${location.name}</h3>
+                <h5 class="card-title">${location.type}</h5>
+                <h6 class="card-subtitle text-muted">${location.dimension}</h6>
+                </div>
+                </div>
+                </div>
+                 `
+            });
+        })
+}
+
+getLocations(page)
+
+document.querySelector('.previousPage').addEventListener('click', event => {
+    if (page > 0) {
+        getLocations(--page)
+    }
+})
+document.querySelector('.nextPage').addEventListener('click', event => {
+    if (page < 4) {
+        getLocations(++page)
+    }
+})
+
+const getEpisodes = () => {
+    axios.get(API_URL + 'episodes/')
+        .then(res => {
+            const episodes = res.data;
+            episodesDiv.innerHTML = '';
+            episodes.forEach(episode => {
+                episodesDiv.innerHTML += `
+            <div class="card col-lg-3 col-xs-12 col-md-6">
+                <div class="personaje">
+                <div class="card-body">
+                <h3 class="card-header">${episode.name}</h3>
+                <h5 class="card-title">${episode.air_date}</h5>
+                <h6 class="card-subtitle text-muted">${episode.episode}</h6>
+                </div>
+                </div>
+                </div>
+                 `
+            });
+        })
+}
+
+getEpisodes()
+
+// document.querySelector('.previousPage').addEventListener('click', event => {
+//     if (page > 0) {
+//         getEpisodes(--page)
+//     }
+// })
+// document.querySelector('.nextPage').addEventListener('click', event => {
+//     if (page < 4) {
+//         getEpisodes(++page)
+//     }
+// })
+
+//menu navegación
+const homeBtn = document.getElementById('homeBtn');
+const locationBtn = document.getElementById('locationBtn');
+const episodesBtn = document.getElementById('episodesBtn')
+const home = document.getElementById('home')
+const ubicacion = document.getElementById('location');
+const episode = document.getElementById('episode');
+
+const quitarDiv = () => {
+    home.className = 'invisible'
+    ubicacion.className = 'invisible'
+    episode.className = 'invisible'
+}
+
+const verHome = () => {
+    quitarDiv()
+    home.className += 'visible';
+}
+
+const verUbicacion = () => {
+    quitarDiv()
+    ubicacion.className += 'visible';
+}
+
+const verEpisodes = () => {
+    quitarDiv()
+    episode.className += 'visible';
+}
+
+homeBtn.addEventListener('click', verHome);
+locationBtn.addEventListener('click', verUbicacion);
+episodesBtn.addEventListener('click', verEpisodes);

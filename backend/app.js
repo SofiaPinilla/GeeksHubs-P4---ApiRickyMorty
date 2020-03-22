@@ -42,6 +42,25 @@ app.get('/locations', (req, res) => {
             res.status(500).send('Problema al cargar los locations')
         })
 })
+app.get('/locations/:page', (req, res) => {
+    const start = req.params.page * 20;
+    sequelize.query(`SELECT * FROM locations LIMIT ${start},20`)
+        .then(results => res.send(results[0]))
+        .catch(error => {
+            console.error(error)
+            res.status(500).send('We had a problem trying to load the locations')
+        })
+})
+
+app.get('/episodes/:page', (req, res) => {
+    const start = req.params.page * 5;
+    sequelize.query(`SELECT * FROM episodes LIMIT ${start},5`)
+        .then(results => res.send(results[0]))
+        .catch(error => {
+            console.error(error)
+            res.status(500).send('We had a problem trying to load the episodes')
+        })
+})
 
 //Filtro por id del personaje
 app.get('/personajes/id/:id', (req, res) => {

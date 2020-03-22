@@ -15,38 +15,100 @@
 
     <header>
         <div class="header">
-            <img class="header" src="imagenes/header.png" alt=""></div>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <img class="header" src="imagenes/header.png" alt="">
+        </div>
+        <div class="menunav">
+            <nav class="navhome">
 
-            <div class="collapse navbar-collapse" id="navbarColor02">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <ul class="navbar-nav ">
+                    <li class="javi">
+                        <span id="homeBtn" href="#"> Home</span>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Episodes</a>
+                </ul>
+            </nav>
+
+
+            <nav class="navhome">
+
+                <ul class="navbar-nav ">
+                    <li class="javi">
+                        <span class="javi" id="locationBtn" href="#"> Location</span>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Location</a>
+                </ul>
+            </nav>
+
+
+            <nav class="navhome">
+
+                <ul class="navbar-nav ">
+                    <li class="javi">
+                        <span class="javi" id="episodesBtn" href="#"> Episodes</span>
+                    </li>
+
+                </ul>
+            </nav>
+
+        </div>
+
+    </header>
+    <section id="home">
+        <div class="form-group">
+            <h1>Busca aquí tu personaje de Rick y Morty</h1>
+        </div>
+
+        <div class="form-group">
+            <input type="text" id="buscar" class="form-control" placeholder="Buscar personaje">
+        </div>
+
+        <div class="personajes"></div>
+        </div>
+        <div class="btn">
+        </div>
+    </section>
+    <section id="location" class="invisible">
+        <div class="paginacion">
+            <div>
+                <ul class="pagination pagination-lg">
+                    <li class="page-item ">
+                        <button class="previousPage page-link">&laquo; </button>
+                    </li>
+                    <li class="page-item">
+                        <button class="nextPage page-link">&raquo;</button>
                     </li>
                 </ul>
             </div>
-        </nav>
+        </div>
 
-    </header>
-    <div class="form-group">
-        <h1>Busca aquí tu personaje de Rick y Morty</h1>
-    </div>
+        <div class="locations"></div>
 
-    <div class="form-group">
-        <input type="text" id="buscar" class="form-control" placeholder="Buscar personaje">
-    </div>
+        <div class="paginacion">
+            <div>
+                <ul class="pagination pagination-lg">
+                    <li class="page-item ">
+                        <button class="previousPage page-link">&laquo; </button>
+                    </li>
+                    <li class="page-item">
+                        <button class="nextPage page-link">&raquo;</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
 
-    <div class="personajes"></div>
-    </div>
-    <div class="btn">
-    </div>
+    </section>
 
+    <section id="episode" class="invisible">
+
+        <h1 class="form-group">Episodios de Rick y Morty</h1>
+        <div class="episodes"></div>
+    </section>
+
+    <footer>
+        <div class="copyright">
+            <p class="copyright">© 2020 Sofía Pinilla, todos los derechos reservados. </p>
+            <br>
+            <br><br>
+        </div>
+    </footer>
 </body>
 
 </html>
