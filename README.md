@@ -62,7 +62,7 @@ cd backend
 node app
 ```
 
-Y levantar el frontend con live server o iniciar tu index.html
+Y levantar el frontend con live server o iniciar tu index.html.
 
 ---
 Hecho por [Sofía Pinilla](https://github.com/SofiaPinilla) 😊
