@@ -1,7 +1,7 @@
 const express = require('express');
 const { sequelize } = require('../models/index');
 const router = express.Router();
-
+//Endpoint
 router.get('/', (req, res) => {
     sequelize.query(`SELECT * FROM locations`)
         .then(results => res.send(results[0]))
@@ -11,16 +11,15 @@ router.get('/', (req, res) => {
         })
 })
 router.get('/:page', (req, res) => {
-    const start = req.params.page * 20;
-    sequelize.query(`SELECT * FROM locations LIMIT ${start},20`)
-        .then(results => res.send(results[0]))
-        .catch(error => {
-            console.error(error)
-            res.status(500).send('We had a problem trying to load the locations')
-        })
-})
-
-//Filtro por id del location
+        const start = req.params.page * 20;
+        sequelize.query(`SELECT * FROM locations LIMIT ${start},20`)
+            .then(results => res.send(results[0]))
+            .catch(error => {
+                console.error(error)
+                res.status(500).send('We had a problem trying to load the locations')
+            })
+    })
+    //Filtro por id del location
 router.get('/id/:id', (req, res) => {
         const id = req.params.id;
         sequelize.query(`SELECT * FROM locations WHERE id=${id}`)

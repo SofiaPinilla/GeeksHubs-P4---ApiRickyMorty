@@ -2,18 +2,16 @@ const express = require('express');
 const { sequelize } = require('../models/index');
 const router = express.Router();
 
+//Endpoint
 router.get('/', (req, res) => {
-    sequelize.query(`SELECT * FROM episodes`)
-        .then(results => res.send(results[0]))
-        .catch(error => {
-            console.error(error)
-            res.status(500).send('Problema al cargar los episodes')
-        })
-})
-
-
-
-//Filtro por id del episodio
+        sequelize.query(`SELECT * FROM episodes`)
+            .then(results => res.send(results[0]))
+            .catch(error => {
+                console.error(error)
+                res.status(500).send('Problema al cargar los episodes')
+            })
+    })
+    //Filtro por id del episodio
 router.get('/id/:id', (req, res) => {
         const id = req.params.id;
         sequelize.query(`SELECT * FROM episodes WHERE id=${id}`)

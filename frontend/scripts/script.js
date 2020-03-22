@@ -5,25 +5,28 @@ const episodesDiv = document.querySelector('.episodes')
 const formEpisode = document.querySelector('#formEpisode')
 const formBuscar = document.getElementById('formBuscar')
 let page = 0
-formEpisode.addEventListener('submit', (event) => {
-    event.preventDefault();
-    saveEpisode();
-})
-formBuscar.addEventListener('submit', (event) => {
-    event.preventDefault();
-    const busqueda = event.target.buscar.value
-    axios.get(API_URL + 'personajes/' + busqueda)
-        .then(res => {
-            const personajes = res.data;
-            renderPersonajes(personajes);
-        })
-        .catch(err => console.error(err))
-})
 
+//función para añadir episodio
+formEpisode.addEventListener('submit', (event) => {
+        event.preventDefault();
+        saveEpisode();
+    })
+    //función para buscar personajes con el botón
+formBuscar.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const busqueda = event.target.buscar.value
+        axios.get(API_URL + 'personajes/' + busqueda)
+            .then(res => {
+                const personajes = res.data;
+                renderPersonajes(personajes);
+            })
+            .catch(err => console.error(err))
+    })
+    //función principal para renderizar los personajes
 const renderPersonajes = personajes => {
-    personajesDiv.innerHTML = '';
-    personajes.forEach(personaje => {
-        personajesDiv.innerHTML += `
+        personajesDiv.innerHTML = '';
+        personajes.forEach(personaje => {
+            personajesDiv.innerHTML += `
                 <div class="card col-lg-3 col-xs-12 col-md-6">
                     <div class="personaje">
                     <div class="card-body">
@@ -36,9 +39,10 @@ const renderPersonajes = personajes => {
                     </div>
                     </div>
                      `
-    });
+        });
 
-}
+    }
+    //función para buscar personajes con intro
 const getPersonajes = () => {
     if (event.key === 'Enter') {
         event.preventDefault();
@@ -54,6 +58,7 @@ const getPersonajes = () => {
 }
 const buscar = document.getElementById('buscar').addEventListener('keyup', getPersonajes)
 
+//función principal para renderizar loocations
 const getLocations = (page) => {
     axios.get(API_URL + 'locations/' + page)
         .then(res => {
@@ -78,17 +83,18 @@ const getLocations = (page) => {
 
 getLocations(page)
 
+//eventos para la paginación
 document.querySelector('.previousPage').addEventListener('click', event => {
     if (page > 0) {
         getLocations(--page)
     }
 })
 document.querySelector('.nextPage').addEventListener('click', event => {
-    if (page < 9) {
-        getLocations(++page)
-    }
-})
-
+        if (page < 9) {
+            getLocations(++page)
+        }
+    })
+    //función principal para renderizar los episodios
 const getEpisodes = () => {
     axios.get(API_URL + 'episodes/')
         .then(res => {
