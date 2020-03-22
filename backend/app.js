@@ -2,6 +2,7 @@ const express = require('express');
 const PORT = process.env.PORT || 3001
 const app = express();
 
+//parse
 app.use(express.json())
 
 //error del cors
@@ -13,6 +14,7 @@ app.use((req, res, next) => {
     next();
 });
 
+//routes
 app.use('/personajes', require('./routes/personajes'));
 app.use('/locations', require('./routes/locations'));
 app.use('/episodes', require('./routes/episodes'));

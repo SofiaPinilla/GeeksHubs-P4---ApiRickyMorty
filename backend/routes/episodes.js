@@ -1,5 +1,5 @@
 const express = require('express');
-const { sequelize } = require('../models/index');
+const { Episode, sequelize } = require('../models/index');
 const router = express.Router();
 
 //Endpoint
