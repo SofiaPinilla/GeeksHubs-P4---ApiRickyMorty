@@ -1,0 +1,94 @@
+.personajes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 10px;
+}
+
+.locations {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 10px;
+}
+
+.episodes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 10px;
+}
+
+.card {
+    margin: 10px;
+}
+
+.header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#buscar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    width: 50%;
+}
+
+.form-group {
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+}
+
+.copyright {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menunav {
+    display: flex;
+    justify-content: space-around;
+    background-color: #073642;
+}
+
+.javi {
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.javi:hover {
+    transition: 1s;
+    color: white;
+}
+
+.visible {
+    display: flex
+}
+
+.invisible {
+    display: none
+}
+
+.navhome {
+    margin: 10px;
+    color: #839496;
+}
+
+.form {
+    width: 30vw;
+}
+
+.submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagination {
+    margin: 10px
+}

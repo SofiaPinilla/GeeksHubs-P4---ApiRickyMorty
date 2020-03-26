@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Api RyM</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- enlace de bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- enlace de axios -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <script src="scripts/script.js" async defer></script>
+</head>
+
+<body>
+    <header>
+        <div class="header">
+            <img class="header" src="imagenes/header.png" alt="">
+        </div>
+        <div class="menunav">
+            <nav class="navhome">
+
+                <ul class="navbar-nav ">
+                    <li class="javi">
+                        <span id="homeBtn" href="#"> Home</span>
+                    </li>
+                </ul>
+            </nav>
+            <nav class="navhome">
+
+                <ul class="navbar-nav ">
+                    <li class="javi">
+                        <span class="javi" id="locationBtn" href="#"> Location</span>
+                    </li>
+                </ul>
+            </nav>
+            <nav class="navhome">
+                <ul class="navbar-nav ">
+                    <li class="javi">
+                        <span class="javi" id="episodesBtn" href="#"> Episodes</span>
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!-- pagina de inicio -->
+    <section id="home">
+        <div class="form-group">
+            <h1>Busca aquí tu personaje de Rick y Morty</h1>
+        </div>
+        <form id="formBuscar">
+            <div class="form-group">
+                <input type="text" id="buscar" class="form-control" placeholder="Buscar personaje">
+
+            </div>
+            <div class="submit">
+                <input type="submit" value="Buscar Personaje" id="btn2" class="btn btn-primary" />
+            </div>
+        </form>
+        <div class="personajes"></div>
+        </div>
+        <div class="btn">
+        </div>
+    </section>
+    <!-- pagina de location -->
+    <section id="location" class="invisible">
+        <div class="paginacion">
+            <div>
+                <ul class="pagination pagination-lg">
+                    <li class="page-item ">
+                        <button class="previousPage page-link">&laquo; </button>
+                    </li>
+                    <li class="page-item">
+                        <button class="nextPage page-link">&raquo;</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="locations"></div>
+        <div class="paginacion">
+            <div>
+                <ul class="pagination pagination-lg">
+                    <li class="page-item ">
+                        <button class="previousPage page-link">&laquo; </button>
+                    </li>
+                    <li class="page-item">
+                        <button class="nextPage page-link">&raquo;</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- pagina de episodios-->
+    <section id="episode" class="invisible">
+        <h1 class="form-group">Lista de episodios de Rick y Morty</h1>
+        <div class="episodes"></div>
+        <div id="form-main">
+            <div id="form-div" class="form-group">
+                <form class="form" id="formEpisode">
+                    <p class="texto">Añade los capitulos que falten:</p>
+                    <p class="name">
+                        <input name="name" class="form-control" type="text" placeholder="" id="name" />
+                    </p>
+
+                    <p class="name">
+                        <input name="name" class="form-control" type="text" id="air_date" placeholder="" />
+                    </p>
+                    <p class="name">
+                        <input name="name" class="form-control" type="text" id="episodeInput" placeholder="" />
+                    </p>
+                    <div class="submit">
+                        <input type="submit" value="Añadir capitulo" id="btn" class="btn btn-primary" />
+                    </div>
+                    <p id="msnExitoso" class="invisible"></p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="copyright">
+            <p class="copyright">© 2020 Sofía Pinilla, todos los derechos reservados. </p>
+            <br>
+            <br><br>
+        </div>
+    </footer>
+</body>
+
+</html>
